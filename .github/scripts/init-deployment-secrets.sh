@@ -7,7 +7,7 @@ gpg --quiet --batch --yes --decrypt --passphrase "${DECRYPT_KEY}" \
 
 mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
 
-cp ./.github/secrets/provision_profile.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
+cp ./.github/secrets/provision_profile.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles
 
 security create-keychain -p "" build.keychain
 security import ./.github/secrets/certs.p12 -t agg -k ~/Library/Keychains/build.keychain -P "${DECRYPT_KEY}" -A
