@@ -1,0 +1,15 @@
+name: iOSGithubCI
+options:
+  bundleIdPrefix: com.iosgithubci
+
+targets:
+  App:
+    type: application
+    platform: iOS
+    deploymentTarget: "14.0"
+    sources: [App]
+    info:
+      path: App/Info.plist
+      properties:
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: true
