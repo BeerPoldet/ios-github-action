@@ -22,9 +22,10 @@ jobs:
         run: make init-deployment-secrets
         env:
           DECRYPT_KEY: ${{ secrets.DECRYPT_KEY }}
-          APPLEID_USERNAME: ${{ secrets.APPLEID_USERNAME }}
-          APPLEID_PASSWORD: ${{ secrets.APPLEID_PASSWORD }}
       - name: Archive and Export
         run: make archive
       - name: Upload to TestFlight
-        run: APPLEID_USERNAME=${{ secrets.APPLEID_USERNAME }} APPLEID_PASSWORD=${{ secrets.APPLEID_PASSWORD }}; make upload
+        run: make upload
+        env:
+          APPLEID_USERNAME: ${{ secrets.APPLEID_USERNAME }}
+          APPLEID_PASSWORD: ${{ secrets.APPLEID_PASSWORD }}
