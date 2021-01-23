@@ -5,7 +5,7 @@ on:
     - master
 jobs:
   test:
-    name: Testing Swift Package and iOS app
+    name: Testing iOS app
     runs-on: macOS-latest
     steps:
       - name: Checkout repository
@@ -13,4 +13,4 @@ jobs:
       - name: Force Xcode 12.3
         run: sudo xcode-select -switch /Applications/Xcode_12.3.app
       - name: Testing iOS app
-        run: exec ./.github/scripts/test_app.sh
+        run: make test
