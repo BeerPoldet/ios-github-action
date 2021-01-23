@@ -1,11 +1,11 @@
-name: PR-Testing
+name: Deploy
 on:
   pull_request:
     branches:
     - master
 jobs:
-  test:
-    name: Testing iOS app
+  deploy:
+    name: Deploying to AppStore
     runs-on: macOS-latest
     steps:
       - name: Checkout Repository
@@ -14,5 +14,10 @@ jobs:
         uses: xavierLowmiller/xcodegen-action@1.1.1
       - name: Use Xcode 12.3
         run: sudo xcode-select -switch /Applications/Xcode_12.3.app
-      - name: Test iOS app
-        run: time make test
+      - name: Setup Credentials
+        run: make decrypt-secrets
+        env:
+          DECRYPT_KEY: ${{ DECRYPT_KEY }}
+          APPLEID_USERNAME: ${{ APPLEID_USERNAME }}
+          APPLEID_PASSWORD: ${{ APPLEID_PASSWORD }}
+
