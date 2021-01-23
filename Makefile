@@ -14,6 +14,14 @@ archive:
              -configuration AppStoreDistribution \
              -archivePath $PWD/build/iOSGithubCI.xcarchive \
              clean archive | xcpretty
+	xcodebuild -archivePath $PWD/build/iOSGithubCI.xcarchive \
+             -exportOptionsPlist App/iOSGithubCI/exportOptions.plist \
+             -exportPath $PWD/build \
+             -allowProvisioningUpdates \
+             -exportArchive | xcpretty
 
-decrypt-secrets:
-	./.github/scripts/decrypt-secrets.sh
+upload:
+	xcrun altool --upload-app -t ios -f build/iOSGithubCI\ iOS.ipa -u "$APPLEID_USERNAME" -p "$APPLEID_PASSWORD" --verbose
+
+init-deployment-secrets:
+	./.github/scripts/init-deployment-secrets.sh
