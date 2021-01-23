@@ -12,6 +12,8 @@ jobs:
         uses: actions/checkout@v1
       - name: XcodeGen
         uses: xavierLowmiller/xcodegen-action@1.1.1
+        with:
+          version: 2.18.0
       - name: Use Xcode 12.3
         run: sudo xcode-select -switch /Applications/Xcode_12.3.app
       - name: Test iOS app
