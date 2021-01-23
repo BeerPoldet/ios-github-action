@@ -13,7 +13,7 @@ jobs:
       - name: XcodeGen
         uses: xavierLowmiller/xcodegen-action@1.0.0
         with:
-          spec: project.yaml
+          spec: project.yml
           quiet: true
           version: '2.18.0'
       - name: Force Xcode 12.3
