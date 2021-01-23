@@ -10,6 +10,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v1
+      - name: XcodeGen
+        uses: xavierLowmiller/xcodegen-action@1.0.0
+        with:
+          spec: project.yaml
+          quiet: true
+          version: '2.18.0'
       - name: Force Xcode 12.3
         run: sudo xcode-select -switch /Applications/Xcode_12.3.app
       - name: Testing iOS app
