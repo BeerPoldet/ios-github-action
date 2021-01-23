@@ -15,8 +15,9 @@ jobs:
       - name: Use Xcode 12.3
         run: sudo xcode-select -switch /Applications/Xcode_12.3.app
       - name: Setup Credentials
-        run: make decrypt-secrets DECRYPT_KEY=${{ secrets.DECRYPT_KEY }}
+        run: ./.github/scripts/decrypt-secrets.sh
         env:
+          DECRYPT_KEY: ${{ secrets.DECRYPT_KEY }}
           APPLEID_USERNAME: ${{ secrets.APPLEID_USERNAME }}
           APPLEID_PASSWORD: ${{ secrets.APPLEID_PASSWORD }}
 
