@@ -22,3 +22,6 @@ archive:
 
 upload:
 	xcrun altool --upload-app -t ios -f build/iOSGithubCI\ iOS.ipa -u "$APPLEID_USERNAME" -p "$APPLEID_PASSWORD" --verbose
+
+init-deployment-secrets:
+	./.github/scripts/init-deployment-secrets.sh

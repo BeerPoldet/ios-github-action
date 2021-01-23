@@ -10,7 +10,7 @@ mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
 cp ./.github/secrets/provision_profile.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
 
 security create-keychain -p "" build.keychain
-security import ./.github/secrets/certs.p12 -t agg -k ~/Library/Keychains/build.keychain -P "" -A
+security import ./.github/secrets/certs.p12 -t agg -k ~/Library/Keychains/build.keychain -P "${DECRYPT_KEY}" -A
 
 security list-keychains -s ~/Library/Keychains/build.keychain
 security default-keychain -s ~/Library/Keychains/build.keychain
