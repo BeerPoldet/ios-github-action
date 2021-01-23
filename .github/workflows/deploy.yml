@@ -17,7 +17,7 @@ jobs:
       - name: Install gpg
         run: brew install gnupg
       - name: Setup Credentials
-        run: ./.github/scripts/decrypt-secrets.sh
+        run: make init-deployment-secrets
         env:
           DECRYPT_KEY: ${{ secrets.DECRYPT_KEY }}
           APPLEID_USERNAME: ${{ secrets.APPLEID_USERNAME }}
