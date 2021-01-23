@@ -8,8 +8,25 @@ targets:
     platform: iOS
     deploymentTarget: "14.0"
     sources: [App]
+    scheme:
+      testTargets: [App_Tests]
     info:
       path: App/Info.plist
       properties:
         UIApplicationSceneManifest:
           UIApplicationSupportsMultipleScenes: true
+        UILaunchScreen:
+          UIRequiredDeviceCapabilities: [armv7]
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+  App_Tests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [App_Tests]
