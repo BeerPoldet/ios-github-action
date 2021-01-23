@@ -1,6 +1,9 @@
 name: iOSGithubCI
 options:
   bundleIdPrefix: com.iosgithubci
+settings:
+  base:
+    DEVELOPMENT_TEAM: F6395XL53N
 
 targets:
   App:
