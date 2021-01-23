@@ -1,6 +1,8 @@
 name: iOSGithubCI
+
 options:
   bundleIdPrefix: com.iosgithubci
+
 settings:
   base:
     DEVELOPMENT_TEAM: F6395XL53N
@@ -26,6 +28,7 @@ targets:
       properties:
         CFBundleDisplayName: $(APP_DISPLAY_NAME)
         CFBundleShortVersionString: "1.0"
+        CFBundleVersion: 2
         UIApplicationSceneManifest:
           UIApplicationSupportsMultipleScenes: true
         UILaunchScreen:
