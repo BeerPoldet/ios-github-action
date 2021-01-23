@@ -17,7 +17,7 @@ jobs:
       - name: Setup Credentials
         run: make decrypt-secrets
         env:
-          DECRYPT_KEY: ${{ DECRYPT_KEY }}
-          APPLEID_USERNAME: ${{ APPLEID_USERNAME }}
-          APPLEID_PASSWORD: ${{ APPLEID_PASSWORD }}
+          DECRYPT_KEY: ${{ secrets.DECRYPT_KEY }}
+          APPLEID_USERNAME: ${{ secrets.APPLEID_USERNAME }}
+          APPLEID_PASSWORD: ${{ secrets.APPLEID_PASSWORD }}
 
