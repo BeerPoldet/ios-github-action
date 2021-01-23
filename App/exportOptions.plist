@@ -18,7 +18,7 @@
 	<string>Apple Distribution: Poldet Assanangkornchai</string>
 	<key>provisioningProfiles</key>
 	<dict>
-		<key>com.iosgithubci.App</key>
+		<key>com.iosgithubci.iOSGithubCI</key>
 		<string>iOS Github CI</string>
 	</dict>
 </dict>
