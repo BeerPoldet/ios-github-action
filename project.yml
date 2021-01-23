@@ -12,12 +12,23 @@ targets:
     deploymentTarget: "14.0"
     sources: [App]
     settings:
-      PRODUCT_BUNDLE_IDENTIFIER: com.iosgithubci.iOSGithubCI
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.iosgithubci.iOSGithubCI
+        PROVISIONING_PROFILE_SPECIFIER: "iOSGithubCI"
+        APP_DISPLAY_NAME: iOSGithubCI
+        PRODUCT_NAME: iOSGithubCI
+        CODE_SIGN_STYLE: Manual
+      configs:
+        Debug:
+          CODE_SIGN_IDENTITY: "iPhone Developer"
+        Release:
+          CODE_SIGN_IDENTITY: "iPhone Distribution"
     scheme:
       testTargets: [App_Tests]
     info:
       path: App/Info.plist
       properties:
+        CFBundleDisplayName: $(APP_DISPLAY_NAME)
         UIApplicationSceneManifest:
           UIApplicationSupportsMultipleScenes: true
         UILaunchScreen:
