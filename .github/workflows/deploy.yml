@@ -25,6 +25,7 @@ jobs:
       - name: Archive and Export
         run: make archive
       - name: Upload to TestFlight
+        if: success()
         run: make upload
         env:
           APPLEID_USERNAME: ${{ secrets.APPLEID_USERNAME }}
