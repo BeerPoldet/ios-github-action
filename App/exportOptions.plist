@@ -19,7 +19,7 @@
 	<key>provisioningProfiles</key>
 	<dict>
 		<key>com.iosgithubci.iOSGithubCI</key>
-		<string>iOS Github CI</string>
+		<string>iOSGithubCI</string>
 	</dict>
 </dict>
 </plist>
