@@ -8,18 +8,7 @@ test:
              test | xcpretty
 
 archive:
-	xcodebuild -project iOSGithubCI.xcodeproj \
-             -scheme App \
-             -sdk iphoneos \
-             -configuration AppStoreDistribution \
-             -archivePath ${PWD}/build/iOSGithubCI.xcarchive \
-             clean archive | xcpretty
-	xcodebuild -archivePath ${PWD}/build/iOSGithubCI.xcarchive \
-             -exportOptionsPlist ${PWD}/App/exportOptions.plist \
-             -exportPath ${PWD}/build \
-             -allowProvisioningUpdates \
-             -exportArchive | xcpretty
-
+	./.github/scripts/archive.sh
 upload:
 	xcrun altool --upload-app -t ios -f ${PWD}/build/iOSGithubCI.ipa \
     -u "${APPLEID_USERNAME}" -p "${APPLEID_PASSWORD}" --verbose
