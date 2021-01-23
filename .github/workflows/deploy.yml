@@ -27,4 +27,7 @@ jobs:
       - name: Archive and Export
         run: make archive
       - name: Upload to TestFlight
-        run: make upload
+        run: |
+          APPLEID_USERNAME=${{ secrets.APPLEID_USERNAME }}; 
+          APPLEID_PASSWORD=${{ secrets.APPLEID_PASSWORD }}; 
+          make upload
