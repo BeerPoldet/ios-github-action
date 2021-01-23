@@ -8,6 +8,8 @@ targets:
     platform: iOS
     deploymentTarget: "14.0"
     sources: [App]
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: com.iosgithubci.iOSGithubCI
     scheme:
       testTargets: [App_Tests]
     info:
