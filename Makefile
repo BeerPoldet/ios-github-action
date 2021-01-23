@@ -16,10 +16,10 @@ archive:
              clean archive | xcpretty
 
 decrypt-secrets:
-	openssl enc -d -k "$DECRYPT_KEY" -aes-256-cbc \
+	openssl enc -d -k "${DECRYPT_KEY}" -aes-256-cbc \
     -in .github/secrets/certs.p12.enc \
     -out .github/secrets/certs.p12
-	openssl enc -d -k "$DECRYPT_KEY" -aes-256-cbc \
+	openssl enc -d -k "${DECRYPT_KEY}" -aes-256-cbc \
     -in .github/secrets/provision_profile.mobileprovision.enc \
     -out .github/secrets/provision_profile.mobileprovision
 
