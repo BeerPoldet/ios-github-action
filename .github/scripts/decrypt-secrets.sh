@@ -1,20 +1,20 @@
-openssl enc -d -k "${DECRYPT_KEY}" -aes-256-cbc \
-  -in .github/secrets/certs.p12.enc \
-  -out .github/secrets/certs.p12
-openssl enc -d -k "${DECRYPT_KEY}" -aes-256-cbc \
-  -in .github/secrets/provision_profile.mobileprovision.enc \
-  -out .github/secrets/provision_profile.mobileprovision
+gpg --quiet --batch --yes --decrypt --passphrase "${DECRYPT_KEY}" \
+  --output .github/secrets/certs.p12 \
+  .github/secrets/certs.p12.gpg
+gpg --quiet --batch --yes --decrypt --passphrase "${DECRYPT_KEY}" \
+  --output .github/secrets/provision_profile.mobileprovision \
+  .github/secrets/provision_profile.mobileprovision.gpg
 
-mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+# mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
 
-cp ./.github/secrets/provision_profile.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
+# cp ./.github/secrets/provision_profile.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
 
-security create-keychain -p "" build.keychain
-security import ./.github/secrets/certs.p12 -t agg -k ~/Library/Keychains/build.keychain -P "" -A
+# security create-keychain -p "" build.keychain
+# security import ./.github/secrets/certs.p12 -t agg -k ~/Library/Keychains/build.keychain -P "" -A
 
-security list-keychains -s ~/Library/Keychains/build.keychain
-security default-keychain -s ~/Library/Keychains/build.keychain
-security unlock-keychain -p "" ~/Library/Keychains/build.keychain
+# security list-keychains -s ~/Library/Keychains/build.keychain
+# security default-keychain -s ~/Library/Keychains/build.keychain
+# security unlock-keychain -p "" ~/Library/Keychains/build.keychain
 
-security set-key-partition-list -S apple-tool:,apple: -s -k "" ~/Library/Keychains/build.keychain
+# security set-key-partition-list -S apple-tool:,apple: -s -k "" ~/Library/Keychains/build.keychain
 

@@ -14,3 +14,6 @@ archive:
              -configuration AppStoreDistribution \
              -archivePath $PWD/build/iOSGithubCI.xcarchive \
              clean archive | xcpretty
+
+decrypt-secrets:
+	./.github/scripts/decrypt-secrets.sh
