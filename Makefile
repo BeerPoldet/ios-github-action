@@ -21,7 +21,8 @@ archive:
              -exportArchive | xcpretty
 
 upload:
-	xcrun altool --upload-app -t ios -f build/App.ipa -u "$APPLEID_USERNAME" -p "$APPLEID_PASSWORD" --verbose
+	xcrun altool --upload-app -t ios -f ${PWD}/build/App.ipa \
+    -u "$APPLEID_USERNAME" -p "$APPLEID_PASSWORD" --verbose
 
 init-deployment-secrets:
 	./.github/scripts/init-deployment-secrets.sh
