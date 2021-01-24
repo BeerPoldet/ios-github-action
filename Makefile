@@ -11,7 +11,7 @@ archive:
 	xcodebuild -project iOSGithubCI.xcodeproj \
              -scheme App \
              -sdk iphoneos \
-             -configuration AppStoreDistribution \
+             -configuration Release \
              -archivePath ${PWD}/build/iOSGithubCI.xcarchive \
              archive | xcpretty
 
