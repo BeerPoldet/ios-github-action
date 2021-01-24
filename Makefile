@@ -9,7 +9,6 @@ test:
 	xcodebuild -project iOSGithubCI.xcodeproj \
              -scheme App \
              -destination platform=iOS\ Simulator,OS=14.3,name=iPhone\ 12\ Pro\ Max  \
-             -clonedSourcePackagesDirPath .build \
              test | xcpretty
 
 archive:
