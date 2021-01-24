@@ -3,3 +3,4 @@ Info.plist
 *.p12
 *.mobileprovision
 build
+.build
