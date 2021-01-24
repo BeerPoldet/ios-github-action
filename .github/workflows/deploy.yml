@@ -1,46 +1,46 @@
-name: Deploy
-on:
-  pull_request:
-    branches:
-    - master
-jobs:
-  deploy:
-    name: Deploying to AppStore
-    runs-on: macOS-latest
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v1
+# name: Deploy
+# on:
+#   pull_request:
+#     branches:
+#     - master
+# jobs:
+#   deploy:
+#     name: Deploying to AppStore
+#     runs-on: macOS-latest
+#     steps:
+#       - name: Checkout Repository
+#         uses: actions/checkout@v1
           
-      - name: XcodeGen
-        uses: xavierLowmiller/xcodegen-action@1.1.1
-        with:
-          version: 2.18.0
+#       - name: XcodeGen
+#         uses: xavierLowmiller/xcodegen-action@1.1.1
+#         with:
+#           version: 2.18.0
 
-      - name: Cache SPM
-        uses: actions/cache@v2
-        with:
-          path: .build
-          key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
-          restore-keys: |
-            ${{ runner.os }}-spm-
+#       - name: Cache SPM
+#         uses: actions/cache@v2
+#         with:
+#           path: .build
+#           key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
+#           restore-keys: |
+#             ${{ runner.os }}-spm-
 
-      - name: Use Xcode 12.3
-        run: sudo xcode-select -switch /Applications/Xcode_12.3.app
+#       - name: Use Xcode 12.3
+#         run: sudo xcode-select -switch /Applications/Xcode_12.3.app
 
-      - name: Install gpg
-        run: brew install gnupg
+#       - name: Install gpg
+#         run: brew install gnupg
 
-      - name: Setup Credentials
-        run: make init-deployment-secrets
-        env:
-          DECRYPT_KEY: ${{ secrets.DECRYPT_KEY }}
+#       - name: Setup Credentials
+#         run: make init-deployment-secrets
+#         env:
+#           DECRYPT_KEY: ${{ secrets.DECRYPT_KEY }}
 
-      - name: Archive and Export
-        run: make archive
+#       - name: Archive and Export
+#         run: make archive
 
-      - name: Upload to TestFlight
-        if: success()
-        run: make upload
-        env:
-          APPLEID_USERNAME: ${{ secrets.APPLEID_USERNAME }}
-          APPLEID_PASSWORD: ${{ secrets.APPLEID_PASSWORD }}
+#       - name: Upload to TestFlight
+#         if: success()
+#         run: make upload
+#         env:
+#           APPLEID_USERNAME: ${{ secrets.APPLEID_USERNAME }}
+#           APPLEID_PASSWORD: ${{ secrets.APPLEID_PASSWORD }}
