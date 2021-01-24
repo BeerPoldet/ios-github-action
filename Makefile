@@ -1,6 +1,9 @@
 xcode:
 	xcodegen generate && open iOSGithubCI.xcodeproj
 
+xcg:
+	xcodegen generate
+
 test:
 	xcodebuild -project iOSGithubCI.xcodeproj \
              -scheme App \

@@ -5,6 +5,7 @@ options:
 settings:
   base:
     DEVELOPMENT_TEAM: F6395XL53N
+    DISABLE_DIAMOND_PROBLEM_DIAGNOSTIC: 1
 targets:
   App:
     type: application
@@ -41,6 +42,7 @@ targets:
           - UIInterfaceOrientationLandscapeRight
     dependencies:
       - target: HelloWorld
+      - target: Add
 
   App_Tests:
     type: bundle.unit-test
@@ -51,6 +53,17 @@ targets:
     type: framework
     platform: iOS
     sources: [HelloWorld]
+    dependencies:
+      - package: Prelude
+        product: Prelude
+        product: Optics
+    info:
+      path: HelloWorld/Info.plist
+
+  Add:
+    type: framework
+    platform: iOS
+    sources: [Add]
     dependencies:
       - package: Prelude
         product: Prelude
